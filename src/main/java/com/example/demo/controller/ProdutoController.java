@@ -20,17 +20,17 @@ import com.example.demo.repository.ProdutoRepository;
 
 public class ProdutoController {
     @Autowired
-    private ProdutoRepository ProdutoRepository;
+    private ProdutoRepository produtoRepository;
 
     @PostMapping
-    public Produto criar(@RequestBody Produto Produto) {
-    return ProdutoRepository.save(Produto);
+    public Produto criar(@RequestBody Produto produto) {
+    return produtoRepository.save(produto);
 }
 
 
     @GetMapping
     public List<Produto> listarTodos() {
-        return ProdutoRepository.findAll();
+        return produtoRepository.findAll();
 
     }
 
@@ -39,15 +39,15 @@ public class ProdutoController {
     @GetMapping("/{id}")
     public Produto buscarId(@PathVariable Long id) {
 
-        return ProdutoRepository.findById(id).orElse(null);
+        return produtoRepository.findById(id).orElse(null);
 
         
         
     }
 
     @DeleteMapping("/{id}")	
-    public void Apagar(@PathVariable Long id) {
-        ProdutoRepository.deleteById(id);
+    public void apagar(@PathVariable Long id) {
+        produtoRepository.deleteById(id);
     }
 
     
